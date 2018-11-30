@@ -1,23 +1,24 @@
-const path = require('path');
+const path = require('path')
 
-const pathResolve = dir => path.join(__dirname, dir);
+const pathResolve = dir => path.join(__dirname, dir)
 
-exports.modifyWebpackConfig = ({ config }) => {
+exports.onCreateWebpackConfig = ({ actions }) => {
   // console.log(JSON.stringify(config.resolve(), null, 4));
 
-  config.loader('tslint', {
-    test: /\.ts$/,
-    exclude: /node_modules/,
-  });
+  // config.loader('tslint', {
+  //   test: /\.ts$/,
+  //   exclude: /node_modules/,
+  // })
 
-  config.merge({
+  // config.merge({
+  actions.setWebpackConfig({
     resolve: {
-      extensions: ['.ts', '.tsx', '.json', '.scss'],
+      extensions: ['.js', '.jsx', 'ts', 'tsx', '.json', '.scss'],
       alias: {
-        '@': pathResolve('src')
-      }
-    }
-  });
+        '@': pathResolve('src'),
+      },
+    },
+  })
 
-  return config;
-};
+  return actions
+}

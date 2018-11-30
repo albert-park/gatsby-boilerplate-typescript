@@ -1,26 +1,36 @@
 import React, { SFC } from 'react';
-import styles from './page.module.scss';
+import { Link } from 'gatsby';
+
+import * as styles from './header.module.scss';
 
 export interface HeaderProps {
-  title: string;
-  value: number;
+  siteTitle: string
+  value: number
 }
 
-const Header: SFC<HeaderProps> = (props) => {
-  return (
-    <div className={styles['header']}>
-      <p>
-        {props.title}
-        <br />
-        the value is {props.value}
-      </p>
+const Header: SFC<HeaderProps> = (props) => (
+
+  <div
+    className={styles['headerWrapper']}
+  >
+    <div
+      className={styles['inner']}
+    >
+      <h1>
+        <Link
+          to="/"
+        >
+          {props.siteTitle}
+        </Link>
+        <p>{props.value}</p>
+      </h1>
     </div>
-  )
-}
+  </div>
+)
 
 Header.defaultProps = {
-  title: 'this is default prop',
-  value: 100,
+  siteTitle: 'this is default prop',
+  value: 42
 }
 
 export default Header;

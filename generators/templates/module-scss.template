@@ -1,8 +1,0 @@
-@import "~@/styles/module-import.global";
-.{{name}} {
-    color: white;
-    p {
-        margin: 0;
-        text-align: center;
-    }
-}

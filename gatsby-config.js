@@ -3,35 +3,33 @@ module.exports = {
     title: 'Gatsby Default Starter',
   },
   plugins: [
-    'gatsby-plugin-typescript',
+    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-sass`,
+    'gatsby-plugin-sharp',
+    `gatsby-plugin-tslint`,
+    `gatsby-plugin-typescript`,
+    'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-plugin-react-css-modules',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        // *.css files are included by default.
-        // To support another syntax (e.g. SCSS),
-        // add `postcss-scss` to your project's devDependencies
-        // and add the following option here:
-        filetypes: {
-          '.scss': { syntax: 'postcss-scss' }
-        },
-
-        // Exclude global styles from the plugin using a RegExp:
-        exclude: '\/global\/'
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-postcss-sass',
-      options: {
-        postCssPlugins: [],
-        precision: 8, // SASS default: 5
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
     {
-      resolve: 'gatsby-plugin-typescript-css-modules',
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        modules: true,
-        namedExport: true,
+        name: 'gatsby-starter-default',
+        short_name: 'starter',
+        start_url: '/',
+        background_color: '#663399',
+        theme_color: '#663399',
+        display: 'minimal-ui',
+        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
       },
-    }
+    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.app/offline
+    'gatsby-plugin-offline',
   ],
 }
